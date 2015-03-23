@@ -30,6 +30,7 @@ public static class BuildingMeshGen
 	{
 		// Set up.
 		float wallHeight = levelPlan._wallHeight;
+		float wallHeightSqr = wallHeight * wallHeight;
 		float wallThickness = levelPlan._wallThickness;
 		float floorThickness = levelPlan._floorThickness;
 
@@ -309,6 +310,43 @@ public static class BuildingMeshGen
 			Debug.Log("[" + a + ", " + b + "]");
 		}
 
+		// Break up the extruded edges so that, when raised into the wall mesh, they form squares.
+		for (int i = 0, end = extrudedEdges.Count; i < end; ++i) // Grab the end at the beginning so we can just add stuff onto the end but not loop over it.
+		{
+			IntTuple2 edge = extrudedEdges[i];
+			Vector2 a = extrudedVertexes[edge.e0].position;
+			Vector2 b = extrudedVertexes[edge.e1].position;
+
+			float edgeLengthSqr = (b - a).sqrMagnitude;
+			if (edgeLengthSqr > wallHeightSqr)
+			{
+				float edgeLength = Mathf.Sqrt(edgeLengthSqr);
+				int numSegments = (int)(edgeLength / wallHeight);
+
+				Vector2 edgeDir = (b - a);
+				edgeDir.Normalize();
+
+				IntTuple2 prevSegment = edge;
+				int edgeEndIndex = edge.e1;
+				for (int s = 1; s <= numSegments; ++s)
+				{
+					Vector2 segmentStartPos = a + (s * wallHeight * edgeDir);
+
+					ExtrudedVertex segmentStartVert;
+					segmentStartVert.position = segmentStartPos;
+					segmentStartVert.parentVertex = -1;
+					segmentStartVert.parentAdjacentVertex0 = -1;
+					segmentStartVert.parentAdjacentVertex1 = -1;
+
+					extrudedVertexes.Add(segmentStartVert);
+					prevSegment.e1 = extrudedVertexes.Count - 1;
+
+					prevSegment = new IntTuple2(prevSegment.e1, edgeEndIndex);
+					extrudedEdges.Add(prevSegment);
+				}
+			}
+		}
+
 		// Use the extruded edges to make the wall mesh.
 		List<Vector3> meshVerts = new List<Vector3>();
 		List<Vector2> meshUVs = new List<Vector2>();
@@ -330,7 +368,8 @@ public static class BuildingMeshGen
 			meshVerts.Add(c);
 			meshVerts.Add(d);
 
-			meshUVs.AddRange(new Vector2[] { new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1), new Vector2(1, 1) });
+			float uvWidth = (b - a).magnitude / wallHeight;
+			meshUVs.AddRange(new Vector2[] { new Vector2(0, 0), new Vector2(uvWidth, 0), new Vector2(0, 1), new Vector2(uvWidth, 1) });
 
 			meshTris.AddRange(new int[] { iA, iA + 2, iA + 1 }); // A C B
 			meshTris.AddRange(new int[] { iA + 2, iA + 3, iA + 1 }); // C D B
