@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\ShapePrimitives">
+      <UniqueIdentifier>{258e41ef-15fc-4bfa-8d35-aaa411b1bad3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ShapePrimitives\Cuboid.h">
+      <Filter>Source Files\ShapePrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="CompositeShape.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugUtils.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Quaternion.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4x4.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CompositeShapeManager.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UnityPlugin.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ShapePrimitives\Cuboid.cpp">
+      <Filter>Source Files\ShapePrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="CompositeShape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix4x4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UnityPlugin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Quaternion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CompositeShapeManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -82,6 +82,9 @@
     <Reference Include="UnityEditor.OSXStandalone.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.OSXStandalone.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="BuildingGeneratorCPP">
+      <HintPath>Assets\Plugins\BuildingGeneratorCPP.dll</HintPath>
+    </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>

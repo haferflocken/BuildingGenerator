@@ -7,16 +7,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{39D2F5A0-8510-5D97-4BC6-F1E9270F5D74}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile>Assets\smcs.rsp</CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.0.0f4</UnityVersion>
@@ -54,10 +52,16 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="BuildingGeneratorCPP">
+      <HintPath>Assets\Plugins\BuildingGeneratorCPP.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BuildingBlueprint.cs" />
     <Compile Include="Assets\Scripts\BuildingMeshGen.cs" />
+    <Compile Include="Assets\Scripts\CSGLib.cs" />
+    <Compile Include="Assets\Scripts\CSGLibInit.cs" />
+    <Compile Include="Assets\Scripts\Util\CSGVoxellizer.cs" />
     <Compile Include="Assets\Scripts\Util\IEnumerableExtensions.cs" />
     <Compile Include="Assets\Scripts\Util\MathUtil.cs" />
     <Compile Include="Assets\Scripts\Util\Tuples.cs" />
